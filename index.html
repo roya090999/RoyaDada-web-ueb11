@@ -1,0 +1,167 @@
+RoyaDada-web-ueb1/
+│
+├── index.html
+├── medien.html
+├── linz.html
+├── dynamisch.html
+│
+└── img/
+    └── bild1.jpg
+<!DOCTYPE html>
+<html lang="at">
+<head>
+    <meta charset="UTF-8">
+    <title>Roya Dada 5R</title>
+</head>
+<body>
+
+    <h1>Roya Dada 5R</h1>
+
+    <h2>Klavierstraße 66</h2>
+
+    <p>
+        Klavierstraße 66<br>
+        4050 Linz
+    </p>
+
+    <h2>Schulbildung</h2>
+
+    <ol>
+        <li>2016 – VS Kirchschlag bei Linz</li>
+        <li>2021 – Unterstufe Khevenhüller Gymnasium</li>
+        <li>2025 – Oberstufe Khevenhüller Gymnasium</li>
+    </ol>
+
+    <h2>Inhalt</h2>
+
+    <ul>
+        <li><a href="medien.html">Medienseite</a></li>
+        <li><a href="linz.html">Linz-Seite</a></li>
+        <li><a href="dynamisch.html">Dynamische-Datenseite</a></li>
+    </ul>
+
+</body>
+</html>
+img/bild1.jpg
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Medienseite</title>
+</head>
+<body>
+
+    <h1>Medienseite</h1>
+
+    <p>
+        <img src="img/bild1.jpg"
+             alt="Person"
+             title="Freies Bild"
+             width="400">
+
+        <br><br>
+
+        Bildquelle:<br>
+        Foto von Max Mustermann,
+        CC BY 4.0,
+        Quelle: https://example.com
+    </p>
+
+</body>
+</html>
+Foto von Andrea Piacquadio,
+CC BY 4.0,
+Quelle: https://www.pexels.com
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Linz</title>
+</head>
+<body>
+
+    <h1>Linz</h1>
+
+    <ul>
+        <li>
+            <a href="https://ars.electronica.art"
+               target="_blank">
+               Ars Electronica
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.lask.at"
+               target="_blank">
+               LASK
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.linz.at"
+               target="_blank">
+               Stadt Linz
+            </a>
+        </li>
+    </ul>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamische Daten</title>
+</head>
+<body>
+
+    <h1>Dynamische Daten</h1>
+
+    <h2>Linzer Stadtteile</h2>
+
+    <ul id="liste-linz"></ul>
+
+    <h2>User vom Server</h2>
+
+    <ul id="service-liste"></ul>
+
+    <script>
+        const stadtteile = [
+            "Urfahr",
+            "Innere Stadt",
+            "Bindermichel",
+            "Roya",
+            "Cassandra"
+        ];
+
+        const liste = document.getElementById("liste-linz");
+
+        stadtteile.forEach(s => {
+            let li = document.createElement("li");
+            li.textContent = s;
+            liste.appendChild(li);
+        });
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(data => {
+
+                const sListe =
+                    document.getElementById("service-liste");
+
+                data.forEach(user => {
+
+                    let li =
+                        document.createElement("li");
+
+                    li.textContent =
+                        "User: " + user.name;
+
+                    sListe.appendChild(li);
+
+                });
+            });
+    </script>
+
+</body>
+</html>
